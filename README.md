@@ -23,14 +23,20 @@
 
 6. Click Go to import.
 
-# 4 5. Start XAMPP Modules
+# 4. Start XAMPP Modules
 Make sure Apache and MySQL are started in the XAMPP control panel.
 
-# 6. Access the Project
+# 5. Access the Project
 1. Open your browser and go to:
 http://localhost/prohealth
 
 2.The project should load and work locally.
+# 6. Test Features
+1.Test patient self-enrollment, symptom submission, medical test suggestions, online appointment booking.
+
+2.Test bed allocation management.
+
+3.Test the AI chatbot integration (if chatbot requires internet or API keys, make sure they are configured).
 
 
 
