@@ -3,6 +3,7 @@
 
 # 1. Install XAMPP
  1.Download and install XAMPP from https://www.apachefriends.org/index.html.
+ 
  2.Make sure Apache and MySQL modules are running in XAMPP Control Panel.
 
 # 2. Get the Project Files
