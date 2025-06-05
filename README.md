@@ -23,3 +23,14 @@
 
 6. Click Go to import.
 
+# 4 5. Start XAMPP Modules
+Make sure Apache and MySQL are started in the XAMPP control panel.
+
+# 6. Access the Project
+1. Open your browser and go to:
+http://localhost/prohealth
+
+   The project should load and work locally.
+
+
+
