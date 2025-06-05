@@ -30,7 +30,7 @@ Make sure Apache and MySQL are started in the XAMPP control panel.
 1. Open your browser and go to:
 http://localhost/prohealth
 
-   The project should load and work locally.
+2.The project should load and work locally.
 
 
 
