@@ -1,3 +1,4 @@
+header php
 <?php include 'header.php'; ?>
 
 <!-- About Start -->
@@ -122,3 +123,961 @@
 
 
 <?php include 'footer.php'; ?>
+
+connection php
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "prohealth";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
+<?php include 'header.php'; ?>
+
+contact php
+<!-- Contact Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Any Questions?</h5>
+            <h1 class="display-4">Please Feel Free To Contact Us</h1>
+        </div>
+        <div class="row g-5 mb-5">
+            <div class="col-lg-4">
+                <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+                    style="height: 200px;">
+                    <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
+                        style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                        <i class="fa fa-2x fa-location-arrow text-white" style="transform: rotate(15deg);"></i>
+                    </div>
+                    <h6 class="mb-0">123 Street, Punjab</h6>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+                    style="height: 200px;">
+                    <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
+                        style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                        <i class="fa fa-2x fa-phone text-white" style="transform: rotate(15deg);"></i>
+                    </div>
+                    <h6 class="mb-0">+012 345 6789</h6>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+                    style="height: 200px;">
+                    <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
+                        style="width: 100px; height: 70px; transform: rotate(-15deg);">
+                        <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
+                    </div>
+                    <h6 class="mb-0">info@prohealth.com</h6>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" style="height: 500px;">
+                <div class="position-relative h-100">
+                    
+                    <iframe class="position-relative w-100 h-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3424.9276710786626!2d75.85699157439407!3d30.86069997943895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a828f09011b15%3A0xbf3f5b51dcc81b12!2sGuru%20Nanak%20Dev%20Engineering%20College!5e0!3m2!1sen!2sin!4v1743064469637!5m2!1sen!2sin"
+                        frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
+            <div class="col-lg-8">
+                <div class="bg-white rounded p-5 m-5 mb-0">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <input type="text" class="form-control bg-light border-0" placeholder="Your Name"
+                                    style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input type="email" class="form-control bg-light border-0" placeholder="Your Email"
+                                    style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control bg-light border-0" placeholder="Subject"
+                                    style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control bg-light border-0" rows="5"
+                                    placeholder="Message"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+<?php include 'footer.php'; ?>
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light mt-5 py-5" style="background-color: #0c0f16eb !important;">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-5 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase mb-4">
+                    <img src="img/logo.png" alt="Pro Health Logo" style="width: 15rem;">
+                </h4>
+                <p class="mb-4">
+                    Pro Health is dedicated to delivering exceptional healthcare services with compassion, innovation,
+                    and care. We offer a wide range of medical treatments and health solutions for individuals and
+                    families, ensuring your wellness is always our top priority.
+                </p>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
+                    Quick Links</h4>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-light mb-2" href="index.php"><i class="fa fa-angle-right me-2"></i>Home</a>
+                    <a class="text-light mb-2" href="about.php"><i class="fa fa-angle-right me-2"></i>About Us</a>
+                    <a class="text-light mb-2" href="service.php"><i class="fa fa-angle-right me-2"></i>Our Services</a>
+                    <a class="text-light" href="contact.php"><i class="fa fa-angle-right me-2"></i>Contact Us</a>
+                    <a class="text-light" href="login.php"><i class="fa fa-angle-right me-2"></i>Login</a>
+                    <a class="text-light" href="register.php"><i class="fa fa-angle-right me-2"></i>Register</a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-secondary mb-4">
+                    Contact Info</h4>
+
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>123 Street, Punjab</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@prohealth.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary me-3"></i>+012 345 67890</p>
+
+                <h6 class="text-primary text-uppercase mt-4 mb-3">Follow Us</h6>
+                <div class="d-flex">
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                            class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-2" href="#"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
+                            class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid bg-dark text-light border-top border-secondary py-4">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-md-0">&copy; <a class="text-primary" href="#">Pro Health</a>. All Rights Reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed by <a class="text-primary" href="#">Simranjit Kaur(2104196)</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/waypoints/waypoints.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/tempusdominus/js/moment.min.js"></script>
+<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+
+<script src="js/main.js"></script>
+<script src='https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js'></script>
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+    window.AgentInitializer.init({
+      agentRenderURL: "https://agent.jotform.com/019682a681587fd788a98c7eba7d9b0b136b",
+      rootId: "JotformAgent-019682a681587fd788a98c7eba7d9b0b136b",
+      formID: "019682a681587fd788a98c7eba7d9b0b136b",
+      queryParams: ["skipWelcome=1", "maximizable=1"],
+      domain: "https://www.jotform.com",
+      isDraggable: false,
+      background: "linear-gradient(180deg, #1d9372 0%, #1d9372 100%)",
+      buttonBackgroundColor: "#1d9372",
+      buttonIconColor: "#FFFFFF",
+      variant: false,
+      customizations: {
+        "greeting": "Yes",
+        "greetingMessage": "Hi! How can I assist you?",
+        "pulse": "Yes",
+        "position": "right"
+      },
+      isVoice: false,
+    });
+  });
+</script>
+<style>
+   html body #root .bg-navy-25
+    {
+        display: none !important;
+    }
+</style>
+
+<style>
+    .bg-navy-25
+    {
+        display: none !important;
+    }
+    .openFormBtn
+    {
+        display: none !important;
+    }
+</style>
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PRO HEALTH - For Better Healthcare</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid py-2 border-bottom d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-decoration-none text-body pe-3" href=""><i class="bi bi-telephone me-2"></i>+012
+                            345 6789</a>
+                        <span class="text-body">|</span>
+                        <a class="text-decoration-none text-body px-3" href=""><i
+                                class="bi bi-envelope me-2"></i>info@prohealth.com</a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center">
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-body px-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-body ps-2" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid sticky-top bg-white shadow-sm">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
+                <a href="index.php" class="navbar-brand">
+                    <h1 class="m-0 text-uppercase text-primary">
+                        <img src="img/logo.png" alt=""
+                            style="width: 15rem; background-color: #1d9372; padding: 12px; border-radius: 6px;">
+                    </h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="about.php" class="nav-item nav-link">About</a>
+                        <a href="service.php" class="nav-item nav-link">Service</a>
+                       
+                        <a href="contact.php" class="nav-item nav-link">Contact</a>
+                        <a href="login.php" class="nav-item nav-link">Login</a>
+                        <a href="register.php" class="nav-item nav-link">Register</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+<?php
+include 'connection.php';
+include 'header.php';
+?>
+
+<!-- Banner Start -->
+<div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-start">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5"
+                    style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Pro Health</h5>
+                <h1 class="display-1 text-white mb-md-4">Best Healthcare Solution In Your City</h1>
+                <div class="pt-2">
+                    <a href="login.php" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Login</a>
+                    <a href="register.php" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Register</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+
+
+<!-- Services Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Services</h5>
+            <h1 class="display-4">Our Healthcare Services at Pro Health</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-user-md text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Emergency Care</h4>
+                    <p class="m-0">24/7 emergency medical services to handle urgent healthcare needs with immediate
+                        attention and expert care.</p>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-procedures text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Operation & Surgery</h4>
+                    <p class="m-0">Advanced surgical procedures and modern operation facilities led by experienced
+                        surgeons for effective outcomes.</p>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-stethoscope text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Outdoor Checkup</h4>
+                    <p class="m-0">Routine health checkups and consultations by our expert medical professionals in a
+                        comfortable setting.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-ambulance text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Ambulance Service</h4>
+                    <p class="m-0">Fast and reliable ambulance service available round-the-clock for safe and timely
+                        patient transportation.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-pills text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Medicine & Pharmacy</h4>
+                    <p class="m-0">Well-stocked pharmacy offering all prescribed medicines and health products at
+                        affordable prices.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-microscope text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Blood Testing</h4>
+                    <p class="m-0">Accurate diagnostic blood tests conducted by trained professionals using advanced
+                        laboratory equipment.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+
+
+<!-- Appointment Start -->
+<div class="container-fluid bg-primary my-5 py-5">
+    <div class="container py-5">
+        <div class="row gx-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Appointment</h5>
+                    <h1 class="display-4">Make An Appointment For Your Family</h1>
+                </div>
+                <p class="text-white mb-5">
+                    At Pro Health, we prioritize your family’s health with care, compassion, and convenience. Our
+                    experienced medical professionals are always ready to assist you with personalized healthcare
+                    solutions tailored to your needs.
+                </p>
+                <ul class="text-white mb-5 ps-4">
+                    <li> Easy and hassle-free appointment scheduling</li>
+                    <li> Expert doctors across multiple specialties</li>
+                    <li> Affordable and quality healthcare for all age groups</li>
+                    <li> Dedicated support and patient-friendly service</li>
+                </ul>
+                <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="login.php">Login</a>
+                <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="register.php">Register</a>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                <img src="img/appointment-illustration.webp" alt="Appointment Illustration"
+                    class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Appointment End -->
+
+
+ 
+
+<!-- Team Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Our Doctors</h5>
+            <h1 class="display-4">Qualified Healthcare Professionals</h1>
+        </div>
+        <div class="owl-carousel team-carousel position-relative">
+            <div class="team-item">
+                <div class="row g-0 bg-light rounded overflow-hidden">
+                    <div class="col-12 col-sm-5 h-100">
+                        <img class="img-fluid h-100" src="img/team-3.jpg" style="object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                        <div class="mt-auto p-4">
+                            <h3>Dr. Ananya Mehra</h3>
+                            <h6 class="fw-normal fst-italic text-primary mb-4">Cardiology Specialist</h6>
+                            <p class="m-0">Dr. Mehra has over 12 years of experience in treating complex cardiovascular conditions. She is dedicated to providing personalized cardiac care and preventive heart health programs.</p>
+                        </div>
+                        <div class="d-flex mt-auto border-top p-4">
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-item">
+                <div class="row g-0 bg-light rounded overflow-hidden">
+                    <div class="col-12 col-sm-5 h-100">
+                        <img class="img-fluid h-100" src="img/team-2.jpg" style="object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                        <div class="mt-auto p-4">
+                            <h3>Dr. Rohan Malhotra</h3>
+                            <h6 class="fw-normal fst-italic text-primary mb-4">Orthopedic Surgeon</h6>
+                            <p class="m-0">Dr. Malhotra specializes in advanced orthopedic surgeries and joint replacements. With a compassionate approach, he ensures quick recovery and enhanced mobility for patients.</p>
+                        </div>
+                        <div class="d-flex mt-auto border-top p-4">
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="team-item">
+                <div class="row g-0 bg-light rounded overflow-hidden">
+                    <div class="col-12 col-sm-5 h-100">
+                        <img class="img-fluid h-100" src="img/team-3.jpg" style="object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                        <div class="mt-auto p-4">
+                            <h3>Dr. Sneha Kapoor</h3>
+                            <h6 class="fw-normal fst-italic text-primary mb-4">Pediatric Consultant</h6>
+                            <p class="m-0">Dr. Kapoor is a renowned pediatrician known for her gentle and caring approach toward children's health. She focuses on holistic growth, nutrition, and preventive care for children of all ages.</p>
+                        </div>
+                        <div class="d-flex mt-auto border-top p-4">
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+ 
+<!-- Testimonial Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
+            <h1 class="display-4">Patients Say About Our Services</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item text-center">
+                        <div class="position-relative mb-5">
+                            <img class="img-fluid rounded-circle mx-auto" src="img/user.png" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-quote-left fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <p class="fs-4 fw-normal">I had a wonderful experience at Pro Health. The doctors and nursing staff were extremely caring and attentive. I felt heard, valued, and very well taken care of throughout my treatment.</p>
+                        <hr class="w-25 mx-auto">
+                        <h3>Ritika Sharma</h3>
+                        <h6 class="fw-normal text-primary mb-3">School Teacher</h6>
+                    </div>
+                    <div class="testimonial-item text-center">
+                        <div class="position-relative mb-5">
+                            <img class="img-fluid rounded-circle mx-auto" src="img/user.png" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-quote-left fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <p class="fs-4 fw-normal">The facilities are top-notch, and the entire staff is highly professional. Pro Health truly lives up to its reputation. I highly recommend their cardiology department for excellent care and support.</p>
+                        <hr class="w-25 mx-auto">
+                        <h3>Manish Arora</h3>
+                        <h6 class="fw-normal text-primary mb-3">Software Engineer</h6>
+                    </div>
+                    <div class="testimonial-item text-center">
+                        <div class="position-relative mb-5">
+                            <img class="img-fluid rounded-circle mx-auto" src="img/user.png" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-quote-left fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <p class="fs-4 fw-normal">From consultation to surgery, everything was managed with great care. The orthopedic team made sure I was comfortable and confident throughout the process. Thank you, Pro Health!</p>
+                        <hr class="w-25 mx-auto">
+                        <h3>Sneha Verma</h3>
+                        <h6 class="fw-normal text-primary mb-3">Entrepreneur</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+
+ 
+<?php include 'footer.php'; ?>
+
+database 
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 10, 2025 at 03:59 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `prohealth`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointments`
+--
+
+CREATE TABLE `appointments` (
+  `id` int(11) NOT NULL,
+  `patient_id` int(11) DEFAULT NULL,
+  `doctor_id` int(11) DEFAULT NULL,
+  `appointment_date` datetime DEFAULT NULL,
+  `cause` varchar(5000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `appointments`
+--
+
+INSERT INTO `appointments` (`id`, `patient_id`, `doctor_id`, `appointment_date`, `cause`) VALUES
+(1, 1, 2, '2025-05-04 09:00:00', '0'),
+(2, 1, 3, '2025-05-04 09:00:00', '0'),
+(3, 1, 2, '2025-05-04 09:30:00', 'Cough - Chest pain'),
+(4, 1, 2, '2025-05-04 10:00:00', 'Skipped'),
+(5, 1, 2, '2025-05-08 09:00:00', 'Skipped');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `beds`
+--
+
+CREATE TABLE `beds` (
+  `id` int(11) NOT NULL,
+  `number` varchar(10) NOT NULL,
+  `ward_id` int(11) NOT NULL,
+  `status` enum('available','occupied') DEFAULT 'available',
+  `patient_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `beds`
+--
+
+INSERT INTO `beds` (`id`, `number`, `ward_id`, `status`, `patient_id`) VALUES
+(1, '201', 1, 'occupied', 1),
+(2, '202', 0, 'available', NULL),
+(3, '203', 0, 'available', NULL),
+(4, '204', 0, 'available', NULL),
+(5, '205', 0, 'available', NULL),
+(6, '206', 0, 'available', NULL),
+(7, '207', 0, 'available', NULL),
+(8, '208', 0, 'available', NULL),
+(9, '209', 0, 'available', NULL),
+(10, '210', 0, 'available', NULL),
+(11, '211', 0, 'available', NULL),
+(212, '212', 0, 'available', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatbot`
+--
+
+CREATE TABLE `chatbot` (
+  `id` int(11) NOT NULL,
+  `user` text NOT NULL,
+  `bot` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `chatbot`
+--
+
+INSERT INTO `chatbot` (`id`, `user`, `bot`, `timestamp`) VALUES
+(1, 'appointment', 'I\'m sorry, I didn\'t understand that. Could you please rephrase?', '2025-04-28 11:20:32'),
+(2, 'doctor info', 'I\'m sorry, I didn\'t understand that. Could you please rephrase?', '2025-04-28 11:20:37'),
+(3, 'emergency', 'Please call our emergency helpline 📞 +123456789 immediately!', '2025-04-28 11:20:40'),
+(4, 'appointment', 'I\'m sorry, I didn\'t understand that. Could you please rephrase?', '2025-04-28 11:21:43'),
+(5, 'doctor info', 'I\'m sorry, I didn\'t understand that. Could you please rephrase?', '2025-04-28 11:21:48'),
+(6, 'appointment', 'Sure, I can help you with scheduling an appointment. What date and time works best?', '2025-04-28 11:22:57'),
+(7, 'emergency', 'Please call our emergency helpline 📞 +123456789 immediately!', '2025-04-28 11:23:01'),
+(8, 'appointment', 'I\'m sorry, I didn\'t understand that. Could you please rephrase?', '2025-04-28 11:24:06'),
+(9, 'appointment', 'You can book an appointment by calling 123-456-7890 or visiting our appointment desk.', '2025-04-28 11:24:31'),
+(10, 'doctor info', 'We have specialists in Cardiology, Orthopedics, Neurology. Please mention your required department.', '2025-04-28 11:24:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctors`
+--
+
+CREATE TABLE `doctors` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL,
+  `blood_group` varchar(10) DEFAULT NULL,
+  `medical_history` text DEFAULT NULL,
+  `emergency_contact_name` varchar(50) DEFAULT NULL,
+  `emergency_contact_number` varchar(15) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `plain_password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) NOT NULL DEFAULT 'doctor',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_pic` varchar(255) DEFAULT NULL,
+  `designation` varchar(2000) DEFAULT NULL,
+  `speciality` varchar(2000) DEFAULT NULL,
+  `exp` varchar(255) DEFAULT NULL,
+  `fees` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `firstname`, `lastname`, `email`, `phone`, `gender`, `dob`, `address`, `city`, `state`, `postal_code`, `blood_group`, `medical_history`, `emergency_contact_name`, `emergency_contact_number`, `password`, `plain_password`, `role`, `created_at`, `profile_pic`, `designation`, `speciality`, `exp`, `fees`) VALUES
+(1, 'Admin', NULL, 'admin@gmail.com', '999999', 'Male', '2025-03-27', 'shastri nagar', 'jagraon', 'Punjab', '142026', 'A+', 'Allergies', 'Emergency-1', '9099', '$2y$10$P5ikG692q34DPrNALH6D1uGI4JRpTy6KrLfX0mnWHBb0IDlJm8SHK', '1234', 'admin', '2025-03-28 07:55:17', NULL, 'PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar', 'PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar', '10', '600'),
+(2, 'Doctor', 'D-1', 'doctor1@gmail.com', '9888', 'Male', '2025-03-29', 'shastri nagar', 'jagraon', 'Punjab', '142026', 'O+', 'Diabeties', 'Emergency2', '9999', '$2y$10$zHUgE3Spgnjz76bJobYFc.HvyGFAUcvcfGS/AV.7GzXvlztvJs7W.', '1234', 'doctor', '2025-03-28 08:03:09', NULL, 'PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar', 'PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar', '35', '2000'),
+(3, 'test doctor', 'pandey', 'sawavoj314@dizigg.com', '9179385440', 'Male', '2025-04-02', 'shastri nagar', 'jagraon', 'Punjab2', '142026', '', '', '', '', '$2y$10$1m67JxQdjcVvz9..9735CeptdEber5ICsXtnQDAAn/lL8j/l6EQKy', '1234', 'doctor', '2025-04-02 09:22:22', '3.jpg', 'PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar', 'PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar', '40', '700');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL,
+  `blood_group` varchar(10) DEFAULT NULL,
+  `medical_history` text DEFAULT NULL,
+  `emergency_contact_name` varchar(50) DEFAULT NULL,
+  `emergency_contact_number` varchar(15) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `plain_password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) NOT NULL DEFAULT 'manager',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_pic` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `manager`
+--
+
+INSERT INTO `manager` (`id`, `firstname`, `lastname`, `email`, `phone`, `gender`, `dob`, `address`, `city`, `state`, `postal_code`, `blood_group`, `medical_history`, `emergency_contact_name`, `emergency_contact_number`, `password`, `plain_password`, `role`, `created_at`, `profile_pic`) VALUES
+(1, 'Jasmin', 'Kaur', 'manager@gmail.com', '9179385440', 'Female', '2025-04-07', 'shastri nagar', 'jagraon', 'Punjab', '142026', '', '', '', '', '$2y$10$HKDsvJT0mvQAB6HPB3c4N.Me/h1EdsK4IHr/yvnYFec/P5SPOazW2', '1234', 'manager', '2025-04-07 16:08:47', '1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `patients`
+--
+
+CREATE TABLE `patients` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) DEFAULT NULL,
+  `lastname` varchar(50) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `postal_code` varchar(10) DEFAULT NULL,
+  `blood_group` varchar(10) DEFAULT NULL,
+  `medical_history` text DEFAULT NULL,
+  `emergency_contact_name` varchar(50) DEFAULT NULL,
+  `emergency_contact_number` varchar(15) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `plain_password` varchar(255) DEFAULT NULL,
+  `role` varchar(255) NOT NULL DEFAULT 'user',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `patients`
+--
+
+INSERT INTO `patients` (`id`, `firstname`, `lastname`, `email`, `phone`, `gender`, `dob`, `address`, `city`, `state`, `postal_code`, `blood_group`, `medical_history`, `emergency_contact_name`, `emergency_contact_number`, `password`, `plain_password`, `role`, `created_at`) VALUES
+(1, 'Patient', 'P-1', 'patient1@gmail.com', '999999', 'Male', '2025-03-27', 'shastri nagar', 'jagraon', 'Punjab', '142026', 'A+', 'Allergies', 'Emergency-1', '9099', '$2y$10$P5ikG692q34DPrNALH6D1uGI4JRpTy6KrLfX0mnWHBb0IDlJm8SHK', '1234', 'user', '2025-03-28 07:55:17'),
+(2, 'Patient', 'P-2', 'patient2@gmail.com', '9888', 'Male', '2025-03-29', 'shastri nagar', 'jagraon', 'Punjab', '142026', 'O+', 'Diabeties', 'Emergency2', '9999', '$2y$10$zHUgE3Spgnjz76bJobYFc.HvyGFAUcvcfGS/AV.7GzXvlztvJs7W.', '1234', 'user', '2025-03-28 08:03:09'),
+(3, 'test doctor', 'pandey', 'testd@g.com', '9179385440', 'Male', '2025-04-03', 'shastri nagar', 'jagraon', 'Punjab', '142026', '', '', '', '', '$2y$10$X2DIbaNwoP0PfN3PEroOQ.VfkXYpsnIjmes6eXT69/uvgYI5BEeKq', '', 'user', '2025-04-02 08:56:13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wards`
+--
+
+CREATE TABLE `wards` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wards`
+--
+
+INSERT INTO `wards` (`id`, `name`) VALUES
+(1, 'Ward A'),
+(2, 'Ward B'),
+(3, 'Ward C'),
+(4, 'Ward D'),
+(5, 'Ward E');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `appointments`
+--
+ALTER TABLE `appointments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `beds`
+--
+ALTER TABLE `beds`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chatbot`
+--
+ALTER TABLE `chatbot`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `doctors`
+--
+ALTER TABLE `doctors`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `patients`
+--
+ALTER TABLE `patients`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `wards`
+--
+ALTER TABLE `wards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `appointments`
+--
+ALTER TABLE `appointments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `beds`
+--
+ALTER TABLE `beds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=213;
+
+--
+-- AUTO_INCREMENT for table `chatbot`
+--
+ALTER TABLE `chatbot`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `doctors`
+--
+ALTER TABLE `doctors`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `patients`
+--
+ALTER TABLE `patients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `wards`
+--
+ALTER TABLE `wards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
