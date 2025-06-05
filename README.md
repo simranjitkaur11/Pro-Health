@@ -2,8 +2,8 @@
 # HOW TO INSTALL
 
 # 1. Install XAMPP
- Download and install XAMPP from https://www.apachefriends.org/index.html
- Make sure Apache and MySQL modules are running in XAMPP Control Panel.
+ 1.Download and install XAMPP from https://www.apachefriends.org/index.html.
+ 2.Make sure Apache and MySQL modules are running in XAMPP Control Panel.
 
 # 2. Get the Project Files
 # Copy the entire ProHealth project folder into the htdocs directory inside your XAMPP installation folder.
