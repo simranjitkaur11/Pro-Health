@@ -980,7 +980,359 @@ if (isset($_POST['submit'])) {
 
     toggleLoginButton();
 </script>
+<?php
+include 'connection.php';
+include 'header.php';
 
+if (isset($_POST['submit'])) {
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+    $dob = mysqli_real_escape_string($conn, $_POST['dob']);
+    $address = mysqli_real_escape_string($conn, $_POST['address']);
+    $city = mysqli_real_escape_string($conn, $_POST['city']);
+    $state = mysqli_real_escape_string($conn, $_POST['state']);
+    $postal_code = mysqli_real_escape_string($conn, $_POST['postal_code']);
+    $blood_group = mysqli_real_escape_string($conn, $_POST['blood_group']);
+    $medical_history = mysqli_real_escape_string($conn, $_POST['medical_history']);
+    $emergency_contact_name = mysqli_real_escape_string($conn, $_POST['emergency_contact_name']);
+    $emergency_contact_number = mysqli_real_escape_string($conn, $_POST['emergency_contact_number']);
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+    // Check if email already exists
+    $check_query = "SELECT * FROM patients WHERE email='$email'";
+    $result = mysqli_query($conn, $check_query);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "Email already registered!";
+    } else {
+        $query = "INSERT INTO patients (firstname, lastname, email, phone, gender, dob, address, city, state, postal_code, blood_group, medical_history, emergency_contact_name, emergency_contact_number, password, plain_password) 
+                  VALUES ('$firstname', '$lastname', '$email', '$phone', '$gender', '$dob', '$address', '$city', '$state', '$postal_code', '$blood_group', '$medical_history', '$emergency_contact_name', '$emergency_contact_number', '$password','" . $_POST['password'] . "')";
+
+        if (mysqli_query($conn, $query)) {
+            echo '<div class="alert alert-success">Patient registered successfully!</div>';
+        } else {
+            echo '<div class="alert alert-danger">Error: ' . mysqli_error($conn) . '</div>';
+        }
+
+    }
+}
+?>
+
+
+
+<!-- Contact Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+
+
+        <div class="row justify-content-center position-relative" style="">
+            <div class="col-lg-10">
+                <div class="bg-white rounded pt-0 mt-0 mb-0">
+                    <form class="border p-5" action="" method="post" onsubmit="return validateForm();">
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <a href="index.php">
+                                    <img src="img/logo.png" class="mb-3" alt=""
+                                        style="width: 15rem;background: #1d9372;padding: 10px;border-radius: 7px;">
+                                </a>
+                                <h4>Patient Registration Form</h4>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light p-3" name="firstname"
+                                    placeholder="First Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light p-3" name="lastname"
+                                    placeholder="Last Name" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="email" class="form-control bg-light p-3" name="email"
+                                    placeholder="Email Address" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control bg-light p-3" name="phone"
+                                    placeholder="Phone Number" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <select name="gender" id="" class="form-control bg-light p-3" required>
+                                    <option value="">Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light p-3" name="dob"
+                                    placeholder="Date of Birth" required onclick="this.type='date'">
+                            </div>
+
+                            <div class="col-6">
+                                <input type="text" class="form-control bg-light p-3" name="address"
+                                    placeholder="Address" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light p-3" name="city" placeholder="City"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light p-3" name="state" placeholder="State"
+                                    required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control bg-light p-3" name="postal_code"
+                                    placeholder="Postal Code" required>
+                            </div>
+                            <div class="col-md-6" hidden>
+                                <input type="text" class="form-control bg-light p-3" name="country"
+                                    placeholder="Country" value="India" required readonly>
+                            </div>
+
+                            <div class="col-6">
+                                <input type="text" class="form-control bg-light p-3" name="blood_group"
+                                    placeholder="Blood Group">
+                            </div>
+
+                            <div class="col-6">
+                                <input type="text" class="form-control bg-light p-3"
+                                    placeholder="Medical History / Allergies" name="medical_history">
+                            </div>
+
+                            <div class="col-6">
+                                <input type="text" class="form-control bg-light p-3"
+                                    placeholder="Emergency Contact Name" name="emergency_contact_name">
+                            </div>
+
+                            <div class="col-6">
+                                <input type="tel" class="form-control bg-light p-3"
+                                    placeholder="Emergency Contact Number" name="emergency_contact_number">
+                            </div>
+
+                            <div class="col-6">
+                                <input type="password" class="form-control bg-light p-3" placeholder="Create Password"
+                                    name="password" required>
+                            </div>
+
+                            <div class="col-6">
+                                <input type="password" class="form-control bg-light p-3" placeholder="Confirm Password"
+                                    name="confirm_password" required>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit" name="submit">Register</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+<?php include 'footer.php'; ?>
+
+<script>
+    function validateForm() {
+        var password = document.getElementsByName("password")[0].value;
+        var confirmPassword = document.getElementsByName("confirm_password")[0].value;
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return false;
+        }
+        return true;
+    }
+</script>
+<?php include 'header.php'; ?>
+    
+
+<!-- Services Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Services</h5>
+            <h1 class="display-4">Our Healthcare Services at Pro Health</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-user-md text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Emergency Care</h4>
+                    <p class="m-0">24/7 emergency medical services to handle urgent healthcare needs with immediate
+                        attention and expert care.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-procedures text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Operation & Surgery</h4>
+                    <p class="m-0">Advanced surgical procedures and modern operation facilities led by experienced
+                        surgeons for effective outcomes.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-stethoscope text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Outdoor Checkup</h4>
+                    <p class="m-0">Routine health checkups and consultations by our expert medical professionals in a
+                        comfortable setting.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-ambulance text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Ambulance Service</h4>
+                    <p class="m-0">Fast and reliable ambulance service available round-the-clock for safe and timely
+                        patient transportation.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-pills text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Medicine & Pharmacy</h4>
+                    <p class="m-0">Well-stocked pharmacy offering all prescribed medicines and health products at
+                        affordable prices.</p>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div
+                    class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                    <div class="service-icon mb-4">
+                        <i class="fa fa-2x fa-microscope text-white"></i>
+                    </div>
+                    <h4 class="mb-3">Blood Testing</h4>
+                    <p class="m-0">Accurate diagnostic blood tests conducted by trained professionals using advanced
+                        laboratory equipment.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+
+
+<!-- Appointment Start -->
+<div class="container-fluid bg-primary my-5 py-5">
+    <div class="container py-5">
+        <div class="row gx-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">Appointment</h5>
+                    <h1 class="display-4">Make An Appointment For Your Family</h1>
+                </div>
+                <p class="text-white mb-5">
+                    At Pro Health, we prioritize your family’s health with care, compassion, and convenience. Our
+                    experienced medical professionals are always ready to assist you with personalized healthcare
+                    solutions tailored to your needs.
+                </p>
+                <ul class="text-white mb-5 ps-4">
+                    <li> Easy and hassle-free appointment scheduling</li>
+                    <li> Expert doctors across multiple specialties</li>
+                    <li> Affordable and quality healthcare for all age groups</li>
+                    <li> Dedicated support and patient-friendly service</li>
+                </ul>
+                <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="#">Find Doctor</a>
+                <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="#">Learn More</a>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                <img src="img/appointment-illustration.webp" alt="Appointment Illustration"
+                    class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Appointment End -->
+
+
+
+<!-- Testimonial Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+            <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Testimonial</h5>
+            <h1 class="display-4">Patients Say About Our Services</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item text-center">
+                        <div class="position-relative mb-5">
+                            <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-1.jpg" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-quote-left fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <p class="fs-4 fw-normal">I had a wonderful experience at Pro Health. The doctors and nursing staff were extremely caring and attentive. I felt heard, valued, and very well taken care of throughout my treatment.</p>
+                        <hr class="w-25 mx-auto">
+                        <h3>Ritika Sharma</h3>
+                        <h6 class="fw-normal text-primary mb-3">School Teacher</h6>
+                    </div>
+                    <div class="testimonial-item text-center">
+                        <div class="position-relative mb-5">
+                            <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-2.jpg" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-quote-left fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <p class="fs-4 fw-normal">The facilities are top-notch, and the entire staff is highly professional. Pro Health truly lives up to its reputation. I highly recommend their cardiology department for excellent care and support.</p>
+                        <hr class="w-25 mx-auto">
+                        <h3>Manish Arora</h3>
+                        <h6 class="fw-normal text-primary mb-3">Software Engineer</h6>
+                    </div>
+                    <div class="testimonial-item text-center">
+                        <div class="position-relative mb-5">
+                            <img class="img-fluid rounded-circle mx-auto" src="img/testimonial-3.jpg" alt="">
+                            <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-quote-left fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <p class="fs-4 fw-normal">From consultation to surgery, everything was managed with great care. The orthopedic team made sure I was comfortable and confident throughout the process. Thank you, Pro Health!</p>
+                        <hr class="w-25 mx-auto">
+                        <h3>Sneha Verma</h3>
+                        <h6 class="fw-normal text-primary mb-3">Entrepreneur</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+
+<?php include 'footer.php'; ?>
 database 
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
