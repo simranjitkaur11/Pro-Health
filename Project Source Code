@@ -734,6 +734,252 @@ include 'header.php';
 
  
 <?php include 'footer.php'; ?>
+<?php
+include 'connection.php';
+include 'header.php';
+unset($_SESSION['cause']);
+
+if (isset($_POST['submit'])) {
+    $roles = $_POST['roles'];
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = $_POST['password'];
+
+    if ($roles == "admin") {
+        $query = "SELECT * FROM doctors WHERE email = ?";
+    } elseif ($roles == "doctor") {
+        $query = "SELECT * FROM doctors WHERE email = ? AND role = 'doctor'";
+    } elseif ($roles == "patient") {
+        $query = "SELECT * FROM patients WHERE email = ?";
+    } elseif ($roles == "manager") {
+        $query = "SELECT * FROM manager WHERE email = ?";
+    } else {
+        echo '<div class="alert alert-danger">Invalid role selected!</div>';
+        exit;
+    }
+
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['firstname'] . ' ' . $user['lastname'];
+            $_SESSION['role'] = $user['role'];
+            $_SESSION['email'] = $user['email'];
+            if ($roles == "patient" && isset($_POST['problem_symptom'])) {
+                $_SESSION['cause'] = mysqli_real_escape_string($conn, $_POST['problem_symptom']);
+            }
+            echo '<div class="alert alert-success">Login successful! Redirecting...</div>';
+            echo "<script>window.location='sitedashboard/index.php';</script>";
+        } else {
+            echo '<div class="alert alert-danger">Invalid password!</div>';
+        }
+    } else {
+        echo '<div class="alert alert-danger">User not found!</div>';
+    }
+    mysqli_stmt_close($stmt);
+}
+?>
+
+<!-- Contact Start -->
+<div class="container-fluid pt-5">
+    <div class="container">
+        <div class="row justify-content-center position-relative">
+            <div class="col-lg-8 col-12">
+                <div class="bg-white rounded pt-0 mt-0 mb-0">
+                    <form class="border p-5" action="" method="post">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <a href="index.php">
+                                    <img src="img/logo.png" class="mb-3" alt=""
+                                        style="width: 15rem;background: #1d9372;padding: 10px;border-radius: 7px;">
+                                </a>
+                                <h4>Login your account</h4>
+                            </div>
+                            <div class="col-12">
+                                <input type="email" class="form-control bg-light p-3" name="email"
+                                    placeholder="User Name">
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control bg-light p-3" name="password"
+                                    placeholder="Password">
+                            </div>
+                            <div class="mt-3" id="symp">
+                                <h5>Select Your Health Issue</h5>
+                                <button type="button" id="skipSelection" class="btn btn-link mt-2">Skip this step</button>
+
+                                <div id="problems" class="d-flex flex-wrap gap-2 mt-3">
+                                    <a href="#" class="btn btn-outline-success" data-problem="Fever">Fever</a>
+                                    <a href="#" class="btn btn-outline-success" data-problem="Cough">Cough</a>
+                                    <a href="#" class="btn btn-outline-success" data-problem="Headache">Headache</a>
+                                    <a href="#" class="btn btn-outline-success" data-problem="Skin Rash">Skin Rash</a>
+                                </div>
+
+                                <div id="symptom-section" class="mt-4" style="display:none;">
+                                    <h6>Related Symptoms</h6>
+                                    <div id="symptom-list" class="d-flex flex-wrap gap-2"></div>
+                                </div>
+
+                                <div id="suggestion-section" class="mt-4" style="display:none;">
+                                    <h6>Suggestions</h6>
+                                    <div id="suggestion-list" class="d-flex flex-wrap gap-2"></div>
+                                </div>
+
+                                <input type="hidden" class="form-control mt-3" id="selectedProblemSymptom"
+                                    name="problem_symptom" placeholder="Selected Problem and Symptoms" readonly>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="role1"><input type="radio" value="admin" id="role_admin" name="roles"
+                                        checked> Admin</label>
+                                <label for="role2"><input type="radio" value="doctor" id="role_doctor" name="roles">
+                                    Doctor</label>
+                                <label for="role3"><input type="radio" value="manager" id="role_manager" name="roles">
+                                    Manager</label>
+                                <label for="role4"><input type="radio" value="patient" id="role_patient" name="roles">
+                                    Patient</label>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit" name="submit" id="loginBtn" disabled>Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+<?php include 'footer.php'; ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    const problemSymptoms = {
+        'Fever': {
+            symptoms: ['Chills', 'Sweating', 'Weakness'],
+            suggestions: {
+                'Chills': 'Medical Tests Required: Complete Blood Count (CBC), Blood Culture, Urinalysis',
+                'Sweating': 'Medical Tests Required: Thyroid Function Tests, Blood Glucose Test',
+                'Weakness': 'Medical Tests Required: Complete Blood Count (CBC), Electrolyte Panel'
+            }
+        },
+        'Cough': {
+            symptoms: ['Dry throat', 'Chest pain', 'Breathing issue'],
+            suggestions: {
+                'Dry throat': 'Medical Tests Required: Throat Culture, Chest X-ray',
+                'Chest pain': 'Medical Tests Required: Chest X-ray, Electrocardiogram (ECG)',
+                'Breathing issue': 'Medical Tests Required: Pulmonary Function Tests, Chest CT Scan'
+            }
+        },
+        'Headache': {
+            symptoms: ['Migraine', 'Blurred vision', 'Fatigue'],
+            suggestions: {
+                'Migraine': 'Medical Tests Required: Brain MRI, Blood Tests',
+                'Blurred vision': 'Medical Tests Required: Eye Exam, Brain CT Scan',
+                'Fatigue': 'Medical Tests Required: Complete Blood Count (CBC), Thyroid Function Tests'
+            }
+        },
+        'Skin Rash': {
+            symptoms: ['Itching', 'Redness', 'Swelling'],
+            suggestions: {
+                'Itching': 'Medical Tests Required: Skin Allergy Test, Blood Tests',
+                'Redness': 'Medical Tests Required: Skin Biopsy, Complete Blood Count (CBC)',
+                'Swelling': 'Medical Tests Required: Blood Tests, Imaging Studies'
+            }
+        }
+    };
+
+    let selectedProblem = '';
+    let selectedSymptoms = [];
+    let skipClicked = false;
+
+    $('#problems a').click(function (e) {
+        e.preventDefault();
+        skipClicked = false;
+        selectedProblem = $(this).data('problem');
+        selectedSymptoms = [];
+
+        $('#symptom-list').empty();
+        $('#suggestion-list').empty();
+        $('#problems a').removeClass('btn-success').addClass('btn-outline-success');
+        $(this).removeClass('btn-outline-success').addClass('btn-success');
+        $('#symptom-section').show();
+        $('#suggestion-section').hide();
+
+        problemSymptoms[selectedProblem].symptoms.forEach(symptom => {
+            $('#symptom-list').append(`<span class="btn btn-outline-secondary symptom-option" data-symptom="${symptom}">${symptom}</span>`);
+        });
+
+        updateInput();
+        toggleLoginButton();
+    });
+
+    $(document).on('click', '.symptom-option', function () {
+        const symptom = $(this).data('symptom');
+        $(this).toggleClass('btn-outline-secondary btn-secondary');
+
+        if (selectedSymptoms.includes(symptom)) {
+            selectedSymptoms = selectedSymptoms.filter(s => s !== symptom);
+        } else {
+            selectedSymptoms.push(symptom);
+        }
+
+        if (selectedSymptoms.length > 0) {
+            let suggestions = '';
+            selectedSymptoms.forEach(symptom => {
+                suggestions += `<p>${problemSymptoms[selectedProblem].suggestions[symptom]}</p>`;
+            });
+            $('#suggestion-list').html(suggestions);
+            $('#suggestion-section').show();
+        } else {
+            $('#suggestion-section').hide();
+        }
+
+        updateInput();
+        toggleLoginButton();
+    });
+
+    $('#skipSelection').click(function () {
+        skipClicked = true;
+        $('#selectedProblemSymptom').val('Skipped');
+        $('#symptom-section').hide();
+        $('#suggestion-section').hide();
+        $('#symp').hide();
+        $('#problems').hide();
+        $(this).hide();
+        toggleLoginButton();
+    });
+
+    $('input[name="roles"]').change(function () {
+        toggleLoginButton();
+    });
+
+    function updateInput() {
+        const combined = selectedProblem + (selectedSymptoms.length ? ' - ' + selectedSymptoms.join(', ') : '');
+        $('#selectedProblemSymptom').val(combined);
+    }
+
+    function toggleLoginButton() {
+        const role = $('input[name="roles"]:checked').val();
+
+        if (role === 'patient') {
+            if ((selectedProblem && selectedSymptoms.length > 0) || skipClicked) {
+                $('#loginBtn').prop('disabled', false);
+            } else {
+                $('#loginBtn').prop('disabled', true);
+            }
+        } else {
+            $('#loginBtn').prop('disabled', false);
+        }
+    }
+
+    toggleLoginButton();
+</script>
 
 database 
 -- phpMyAdmin SQL Dump
